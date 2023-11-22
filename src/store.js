@@ -5,6 +5,7 @@ class Store {
   constructor(initState = {}) {
     this.state = initState;
     this.listeners = []; // Слушатели изменений состояния
+    this.state.nextCode = Math.max(...this.state.list.map(item => item.code), 0);// найдет самый большой Code 
   }
 
   /**
@@ -44,7 +45,8 @@ class Store {
   addItem() {
     this.setState({
       ...this.state,
-      list: [...this.state.list, {code: this.state.list.length + 1, title: 'Новая запись'}]
+      nextCode: this.state.nextCode + 1, //следующее число за самым большим
+      list: [...this.state.list, {code: this.state.nextCode + 1, counter:0, title: 'Новая запись'}]
     })
   };
 
@@ -68,8 +70,9 @@ class Store {
       ...this.state,
       list: this.state.list.map(item => {
         if (item.code === code) {
+          !item.selected ? item.counter += 1 : ''; //считает сколько раз выделяли
           item.selected = !item.selected;
-        }
+        }else{ item.selected = false}
         return item;
       })
     })
