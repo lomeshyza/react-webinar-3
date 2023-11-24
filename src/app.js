@@ -10,10 +10,7 @@ import './styles.css';
 function App({store}) {
 
   const list = store.getState().list;
-// функция следит за окончаниями
-  function endings(int, arr) {
-    return (arr = arr || ['раз', 'раза', 'раз']) && arr[(int % 100 > 4 && int % 100 < 20) ? 2 : [2, 0, 1, 1, 1, 2][(int % 10 < 5) ? int % 10 : 5]];
-}
+
   return (
     <div className='App'>
       <div className='App-head'>
@@ -31,7 +28,7 @@ function App({store}) {
                 <div className='Item-code'>{item.code}</div>
                 <div className='Item-title'>
                   {item.title}
-                  {item.counter>0 ? ` | Выделяли ${item.counter} ${endings(item.counter)}` : ''} // выводит количество нажатий, если больше 0
+                  {item.counter>0 ? ` | Выделяли ${item.counter} раз(а)` : ''} {/* выводит количество нажатий, если больше 0 */}
                   </div>
                 <div className='Item-actions'>
                   <button onClick={() => store.deleteItem(item.code)}>
