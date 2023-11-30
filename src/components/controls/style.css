@@ -1,5 +1,24 @@
 .Controls {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   padding: 20px;
+}
+.Controls__btn {
+  float: right;
+  margin-left: 20px;
+  width: 76px;
+  height: 21px;
+}
+.Controls__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+}
+.Controls__info {
+  margin: 0;
+  margin-left: 15px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 21px;
 }
