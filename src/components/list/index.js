@@ -19,7 +19,6 @@ function List({list, onAddItem, onDeleteItem, isOpen}) {
     </div>
   )
 }
-
 List.propTypes = {
   list: PropTypes.arrayOf(PropTypes.shape({
     code: PropTypes.number
